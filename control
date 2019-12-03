@@ -6,5 +6,5 @@ Description: Faster unlock for iPhone X
 Maintainer: CP Digital Darkroom <admin@cpdigitaldarkroom.com>
 Author: CP Digital Darkroom <admin@cpdigitaldarkroom.com>
 Section: Tweaks
-Tag: compatible_min::ios10, compatible_max::ios11.4, purpose::extension
-Version: 1.4.5
+Tag: compatible_min::ios10, compatible_max::ios13.3, purpose::extension
+Version: 1.5

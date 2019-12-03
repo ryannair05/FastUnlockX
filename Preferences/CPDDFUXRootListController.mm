@@ -11,7 +11,6 @@
 
 #import <MessageUI/MessageUI.h>
 #import <MobileGestalt/MobileGestalt.h>
-#import <Preferences/Preferences.h>
 
 @interface CPDDFUXRootListController : PSListController <MFMailComposeViewControllerDelegate>
 
@@ -123,9 +122,9 @@
   [composeViewController setToRecipients:[NSArray arrayWithObjects:@"CP Digital Darkroom <tweaks@cpdigitaldarkroom.support>", nil]];
 
   NSString *product = nil, *version = nil, *build = nil;
-  product = (NSString *)MGCopyAnswer(kMGProductType);
-  version = (NSString *)MGCopyAnswer(kMGProductVersion);
-  build = (NSString *)MGCopyAnswer(kMGBuildVersion);
+  product = (NSString *)MGCopyAnswer(kMGProductType, nil);
+  version = (NSString *)MGCopyAnswer(kMGProductVersion, nil);
+  build = (NSString *)MGCopyAnswer(kMGBuildVersion, nil);
 
   [composeViewController setMessageBody:[NSString stringWithFormat:@"\n\nCurrent Device: %@, iOS %@ (%@)", product, version, build] isHTML:NO];
 

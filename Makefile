@@ -5,7 +5,7 @@ FINALPACKAGE = 1
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = FastUnlockX
-FastUnlockX_FILES = FastUnlockX.xm
+FastUnlockX_FILES = $(wildcard *.xm) 
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

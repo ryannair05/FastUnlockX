@@ -80,3 +80,35 @@
 -(NSInteger)level;
 
 @end
+
+@interface CSCoverSheetViewControllerBase: UIViewController
+@end
+
+@interface CSPresentationViewController : CSCoverSheetViewControllerBase
+@property (nonatomic,copy,readonly) NSArray * presentedViewControllers; 
+@end
+
+@interface CSCombinedListViewController : CSCoverSheetViewControllerBase
+@property(readonly, nonatomic) BOOL hasContent;
+@end
+
+@interface CSModalPresentationViewController : CSPresentationViewController
+@end
+
+@interface CSPageViewController : CSPresentationViewController
+@end
+
+@interface CSMainPageContentViewController : CSPageViewController
+@property(readonly, nonatomic) CSCombinedListViewController *combinedListViewController;
+@end
+
+
+@interface CSCoverSheetViewController : UIViewController
+@property(assign, nonatomic) BOOL fux_alreadyAuthenticated;
+@property(nonatomic, getter=isAuthenticated) BOOL authenticated;
+@property(retain, nonatomic) CSMainPageContentViewController *mainPageContentViewController;
+@property (nonatomic,retain) CSModalPresentationViewController * modalPresentationController;
+- (BOOL)isShowingMediaControls;
+- (BOOL)isInScreenOffMode;
+- (BOOL)biometricUnlockBehavior:(id)arg1 requestsUnlock:(id)arg2 withFeedback:(id)arg3 ;
+@end

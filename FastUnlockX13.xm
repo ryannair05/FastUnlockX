@@ -1,8 +1,8 @@
 //
-//  FastUnlockX.xm
+//  FastUnlockX13.xm
 //  FastUnlockX
 //
-//  Created by Juan Carlos Perez on 01/19/2018.
+//  Created by Juan Carlos Perez on 12/03/2019.
 //  Copyright © 2019 CP Digital Darkroom. All rights reserved.
 //
 
@@ -11,9 +11,9 @@
 
 extern BOOL settingsValueFor(NSString *prefKey);
 
-%group FUX_12
+%group FUX_13
 
-%hook SBDashBoardViewController
+%hook CSCoverSheetViewController
 
 %property (assign, nonatomic) BOOL fux_alreadyAuthenticated;
 
@@ -57,8 +57,8 @@ extern BOOL settingsValueFor(NSString *prefKey);
                     for(id object in self.modalPresentationController.presentedViewControllers) {
                         /*
                          * If presenting a fullscreen notification, return since it's probably important
-                         */
-                        if([object isKindOfClass:NSClassFromString(@"SBDashBoardFullscreenNotificationViewController")]) {
+                         */  
+                        if([object isKindOfClass:NSClassFromString(@"CSFullscreenNotificationViewController")]) {
                             return;
                         }
                     }
@@ -107,7 +107,6 @@ extern BOOL settingsValueFor(NSString *prefKey);
 }
 
 - (void)setInScreenOffMode:(BOOL)screenOff {
-
     %orig;
 
     /*
@@ -116,12 +115,12 @@ extern BOOL settingsValueFor(NSString *prefKey);
      self.fux_alreadyAuthenticated = !screenOff;
 }
 
-%end // SBDashBoardViewController
+%end // CSCoverSheetViewController
 
-%end // FUX_12
+%end // FUX_13
 
 %ctor {
-    if(IS_IOS_OR_NEWER(iOS_13_0)) {} else {
-        %init(FUX_12);
+    if(IS_IOS_OR_NEWER(iOS_13_0)) {
+        %init(FUX_13);
     }
 }
