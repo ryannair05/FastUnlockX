@@ -26,7 +26,7 @@ extern BOOL settingsValueFor(NSString *prefKey);
     * pulling the notification center  down. When viewWillAppear: is called we can determine
     * if the presentation was manual since the controller will already be authenticated.
     */
-    self.fux_alreadyAuthenticated = self.authenticated;
+    self.fux_alreadyAuthenticated = (MSHookIvar<NSUInteger>([objc_getClass("SBLockStateAggregator") sharedInstance], "_lockState") == 0);
 }
 
 /*
@@ -105,16 +105,6 @@ extern BOOL settingsValueFor(NSString *prefKey);
         }
     }
 }
-
-- (void)setInScreenOffMode:(BOOL)screenOff {
-    %orig;
-
-    /*
-     * Reset fux_alreadyAuthenticated. If screen goes off we are not authenticated anymore.
-     */
-     self.fux_alreadyAuthenticated = !screenOff;
-}
-
 %end // CSCoverSheetViewController
 
 %end // FUX_13
